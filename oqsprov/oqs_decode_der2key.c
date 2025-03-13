@@ -651,6 +651,15 @@ MAKE_DECODER(, "hqc256", hqc256, oqsx, SubjectPublicKeyInfo);
 
 MAKE_DECODER(_ecp, "p521_hqc256", p521_hqc256, oqsx, PrivateKeyInfo);
 MAKE_DECODER(_ecp, "p521_hqc256", p521_hqc256, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug1", smaug1, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug1", smaug1, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug3", smaug3, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug3", smaug3, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug5", smaug5, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug5", smaug5, oqsx, SubjectPublicKeyInfo);
 #endif /* OQS_KEM_ENCODERS */
 
 MAKE_DECODER(, "mldsa44", mldsa44, oqsx, PrivateKeyInfo);
@@ -785,4 +794,13 @@ MAKE_DECODER(, "CROSSrsdp128balanced", CROSSrsdp128balanced, oqsx,
              PrivateKeyInfo);
 MAKE_DECODER(, "CROSSrsdp128balanced", CROSSrsdp128balanced, oqsx,
              SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae2", haetae2, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae2", haetae2, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae3", haetae3, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae3", haetae3, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae5", haetae5, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae5", haetae5, oqsx, SubjectPublicKeyInfo);
 ///// OQS_TEMPLATE_FRAGMENT_DECODER_MAKE_END
