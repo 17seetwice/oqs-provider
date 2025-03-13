@@ -56,9 +56,9 @@ extern OSSL_FUNC_provider_get_capabilities_fn oqs_provider_get_capabilities;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
 
 #ifdef OQS_KEM_ENCODERS
-#define OQS_OID_CNT 186
+#define OQS_OID_CNT 186 +6
 #else
-#define OQS_OID_CNT 100
+#define OQS_OID_CNT 100 +6
 #endif
 const char *oqs_oid_alg_list[OQS_OID_CNT] = {
 
@@ -149,6 +149,12 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "hqc256",
     NULL,
     "p521_hqc256",
+    NULL,
+    "smaug1",
+    NULL,
+    "smaug3",
+    NULL,
+    "smaug5",
 
 #endif /* OQS_KEM_ENCODERS */
 
@@ -252,6 +258,12 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "p521_mayo5",
     "1.3.6.1.4.1.62245.2.1.1",
     "CROSSrsdp128balanced",
+    "1.3.9999.9.1.1",
+    "haetae2",
+    "1.3.9999.9.1.2",
+    "haetae3",
+    "1.3.9999.9.1.3",
+    "haetae5",
     ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END
 };
 
@@ -363,8 +375,14 @@ int oqs_patch_oids(void) {
 
         if ((envval = getenv("OQS_OID_P521_HQC256")))
             oqs_oid_alg_list[84] = envval;
+        if ((envval = getenv("OQS_OID_SMAUG1")))
+            oqs_oid_alg_list[86] = envval;
+        if ((envval = getenv("OQS_OID_SMAUG3")))
+            oqs_oid_alg_list[88] = envval;
+        if ((envval = getenv("OQS_OID_SMAUG5")))
+            oqs_oid_alg_list[90] = envval;
 
-#define OQS_KEMOID_CNT 84 + 2
+#define OQS_KEMOID_CNT 84 + 2 + 6
 #else
 #define OQS_KEMOID_CNT 0
 #endif /* OQS_KEM_ENCODERS */
@@ -468,6 +486,12 @@ int oqs_patch_oids(void) {
             oqs_oid_alg_list[96 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_CROSSRSDP128BALANCED")))
             oqs_oid_alg_list[98 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE2")))
+            oqs_oid_alg_list[100 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE3")))
+            oqs_oid_alg_list[102 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE5")))
+            oqs_oid_alg_list[104 + OQS_KEMOID_CNT] = envval;
     } ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_END
     return 1;
 }
@@ -595,6 +619,16 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_signature_functions),
 #endif
+
+#ifdef OQS_ENABLE_SIG_haetae_2
+    SIGALG("haetae2", 120, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_3
+    SIGALG("haetae3", 180, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_5
+    SIGALG("haetae5", 260, oqs_signature_functions),
+#endif
     ///// OQS_TEMPLATE_FRAGMENT_SIG_FUNCTIONS_END
     {NULL, NULL, NULL}};
 
@@ -674,6 +708,18 @@ static const OSSL_ALGORITHM oqsprovider_asym_kems[] = {
 #ifdef OQS_ENABLE_KEM_hqc_256
     KEMBASEALG(hqc256, 256)
     KEMHYBALG(p521_hqc256, 256)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_1
+    KEMBASEALG(smaug1, 128)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+    KEMBASEALG(smaug3, 192)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+    KEMBASEALG(smaug5, 256)
 #endif
     // clang-format on
     ///// OQS_TEMPLATE_FRAGMENT_KEM_FUNCTIONS_END
@@ -768,6 +814,18 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] =
     SIGALG("CROSSrsdp128balanced", 128, oqs_CROSSrsdp128balanced_keymgmt_functions),
 #endif
 
+#ifdef OQS_ENABLE_SIG_haetae_2
+    SIGALG("haetae2", 120, oqs_haetae2_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_3
+    SIGALG("haetae3", 180, oqs_haetae3_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_5
+    SIGALG("haetae5", 260, oqs_haetae5_keymgmt_functions),
+#endif
+
 #ifdef OQS_ENABLE_KEM_frodokem_640_aes
     KEMKMALG(frodo640aes, 128)
 
@@ -855,6 +913,18 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] =
     KEMKMALG(hqc256, 256)
 
     KEMKMHYBALG(p521_hqc256, 256, ecp)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_1
+    KEMKMALG(smaug1, 128)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+    KEMKMALG(smaug3, 192)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+    KEMKMALG(smaug5, 256)
 #endif
         // clang-format on
         ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END
