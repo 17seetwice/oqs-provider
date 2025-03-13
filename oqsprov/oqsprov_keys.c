@@ -53,9 +53,9 @@ static int oqsx_key_recreate_classickey(OQSX_KEY *key, oqsx_key_op_t op);
 ///// OQS_TEMPLATE_FRAGMENT_OQSNAMES_START
 
 #ifdef OQS_KEM_ENCODERS
-#define NID_TABLE_LEN 93
+#define NID_TABLE_LEN 93+3
 #else
-#define NID_TABLE_LEN 50
+#define NID_TABLE_LEN 50+3
 #endif
 
 static oqs_nid_name_t nid_names[NID_TABLE_LEN] = {
@@ -119,6 +119,10 @@ static oqs_nid_name_t nid_names[NID_TABLE_LEN] = {
     {0, "x448_hqc192", OQS_KEM_alg_hqc_192, KEY_TYPE_ECX_HYB_KEM, 192, 0},
     {0, "hqc256", OQS_KEM_alg_hqc_256, KEY_TYPE_KEM, 256, 0},
     {0, "p521_hqc256", OQS_KEM_alg_hqc_256, KEY_TYPE_ECP_HYB_KEM, 256, 0},
+    {0, "smaug1", OQS_KEM_alg_smaug_1, KEY_TYPE_KEM, 128, 0},
+    {0, "smaug3", OQS_KEM_alg_smaug_3, KEY_TYPE_KEM, 192, 0},
+    {0, "smaug5", OQS_KEM_alg_smaug_5, KEY_TYPE_KEM, 256, 0},
+
 
 #endif /* OQS_KEM_ENCODERS */
     {0, "mldsa44", OQS_SIG_alg_ml_dsa_44, KEY_TYPE_SIG, 128},
@@ -186,6 +190,11 @@ static oqs_nid_name_t nid_names[NID_TABLE_LEN] = {
     {0, "p521_mayo5", OQS_SIG_alg_mayo_5, KEY_TYPE_HYB_SIG, 256},
     {0, "CROSSrsdp128balanced", OQS_SIG_alg_cross_rsdp_128_balanced,
      KEY_TYPE_SIG, 128},
+    {0, "haetae2", OQS_SIG_alg_haetae_2, KEY_TYPE_SIG, 120},
+    {0, "haetae3", OQS_SIG_alg_haetae_3, KEY_TYPE_SIG, 180},
+    {0, "haetae5", OQS_SIG_alg_haetae_5, KEY_TYPE_SIG, 260},
+
+
     ///// OQS_TEMPLATE_FRAGMENT_OQSNAMES_END
 };
 
