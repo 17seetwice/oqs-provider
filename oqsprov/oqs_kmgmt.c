@@ -1187,6 +1187,33 @@ static void *CROSSrsdp128balanced_gen_init(void *provctx, int selection) {
                          "CROSSrsdp128balanced", 0, 128, 49, 0);
 }
 
+static void *haetae2_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_2,
+                        "haetae2", KEY_TYPE_SIG, NULL, 120, 50, 0);
+}
+static void *haetae2_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_2, "haetae2", 0,
+                         120, 50, 0);
+}
+
+static void *haetae3_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_3,
+                        "haetae3", KEY_TYPE_SIG, NULL, 180, 51, 0);
+}
+static void *haetae3_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_3, "haetae3", 0,
+                         180, 51, 0);
+}
+
+static void *haetae5_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_5,
+                        "haetae5", KEY_TYPE_SIG, NULL, 260, 52, 0);
+}
+static void *haetae5_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_5, "haetae5", 0,
+                         260, 52, 0);
+}
+
 ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_CONSTRUCTORS_END
 
 #define MAKE_SIG_KEYMGMT_FUNCTIONS(alg)                                        \
@@ -1381,6 +1408,10 @@ MAKE_SIG_KEYMGMT_FUNCTIONS(p384_mayo3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(mayo5)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p521_mayo5)
 MAKE_SIG_KEYMGMT_FUNCTIONS(CROSSrsdp128balanced)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae2)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae3)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae5)
+
 
 MAKE_KEM_KEYMGMT_FUNCTIONS(frodo640aes, OQS_KEM_alg_frodokem_640_aes, 128)
 
@@ -1461,4 +1492,9 @@ MAKE_KEM_ECX_KEYMGMT_FUNCTIONS(x448_hqc192, OQS_KEM_alg_hqc_192, 192, 0)
 MAKE_KEM_KEYMGMT_FUNCTIONS(hqc256, OQS_KEM_alg_hqc_256, 256)
 
 MAKE_KEM_ECP_KEYMGMT_FUNCTIONS(p521_hqc256, OQS_KEM_alg_hqc_256, 256)
+
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaug1, OQS_KEM_alg_smaug_1, 128)
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaug3, OQS_KEM_alg_smaug_3, 192)
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaug5, OQS_KEM_alg_smaug_5, 256)
+
 ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END
