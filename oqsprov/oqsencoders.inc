@@ -414,7 +414,37 @@ ENCODER_w_structure("p521_hqc256", p521_hqc256, pem, SubjectPublicKeyInfo),
 ENCODER_TEXT("p521_hqc256", p521_hqc256),
 #endif
 
-#endif /* OQS_KEM_ENCODERS */
+#ifdef OQS_ENABLE_KEM_smaug_1
+ENCODER_w_structure("smaug1", smaug1, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug1", smaug1),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+ENCODER_w_structure("smaug3", smaug3, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug3", smaug3),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+ENCODER_w_structure("smaug5", smaug5, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug5", smaug5),
+#endif
+#endif
+/* OQS_KEM_ENCODERS */
 
 
 #ifdef OQS_ENABLE_SIG_ml_dsa_44
@@ -798,5 +828,35 @@ ENCODER_w_structure("CROSSrsdp128balanced", CROSSrsdp128balanced, pem, Encrypted
 ENCODER_w_structure("CROSSrsdp128balanced", CROSSrsdp128balanced, der, SubjectPublicKeyInfo),
 ENCODER_w_structure("CROSSrsdp128balanced", CROSSrsdp128balanced, pem, SubjectPublicKeyInfo),
 ENCODER_TEXT("CROSSrsdp128balanced", CROSSrsdp128balanced),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_2
+ENCODER_w_structure("haetae2", haetae2, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae2", haetae2),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_3
+ENCODER_w_structure("haetae3", haetae3, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae3", haetae3),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_5
+ENCODER_w_structure("haetae5", haetae5, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae5", haetae5),
 #endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END
